@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+music1 = Song.create!( { name: "Livin la vida loca", genre: "latino" } )
+music2 = Song.create!( { name: "Si senior", genre: "dance" } )
+music3= Song.create!( { name: "Per tu amor", genre: "love" } )
