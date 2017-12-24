@@ -1,14 +1,27 @@
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Codaisseurify</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+  <%= yield %>
+
+  <br><br>
+  <hr>
+
+  <%= link_to "See all artists", root_path %>
+
+  <%= link_to "Create a new artist", new_artist_path %>
+
+
   </body>
 </html>

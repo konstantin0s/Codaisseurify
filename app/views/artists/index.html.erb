@@ -5,7 +5,8 @@
 
 <% @artists.each do |artist| %>
 <p>
-    Name: <%= artist.name %> <br /> | <%= link_to 'View Artist', artist_path(artist) %> <!--connect this to artists. -->
+    Name: <%= artist.name %> <br /> | <%= link_to 'View Artist', artist_path(artist) %>
+    <%= link_to "[Delete]", artist_path(artist), method: :delete, data: { confirm: "Are you sure?" } %>
 
  </p>
 <% end %>

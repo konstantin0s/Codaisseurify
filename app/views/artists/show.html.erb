@@ -1,13 +1,14 @@
-<h1>Name: <%= @artist.name %></h1>
-<%#= image_tag @artist.image_url %>
+<%= render 'songs/form' %>
 
+<h1>Singer/ Artist: <%= @artist.name %></h1>
+ <%= image_tag @artist.image_url %>
 
-<h4>List of Songs</h4>
+<h4>List of it's own Songs</h4>
 
 <% if @artist.songs.any? %>
   <ul>
     <% @artist.songs.each do |song| %>
-      <li><%= song.name %></li>
+      <li><%= song.title %></li>
     <% end %>
   </ul>
 <% else %>
@@ -15,6 +16,9 @@
 <% end %>
 
 
-<%= link_to 'Back', artists_path %>
 
-  <%= link_to "[Edit]", edit_artist_path(@artist.id) %>
+<%#= link_to 'View artists', artists_path %>
+
+  <%#= link_to "Edit", edit_artist_path(@artist.id) %>
+
+  <%= link_to "Delete", artist_path(@artist), method: :delete, data: { confirm: "Are you sure?" } %>

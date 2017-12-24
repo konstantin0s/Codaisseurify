@@ -1,6 +1,10 @@
 <h1>Editing Artists</h1>
 
-<%= render 'form', artist: @artist %>
+<%= render 'form', artist: @artist %> <br/>
 
-<%= link_to 'Show', artist_path %> |
-<%= link_to 'Back', artists_path %>
+<h1>Add a new song</h1>
+<%= render 'songs/form' %>
+
+
+<%= link_to 'See the artist', artist_path %> |
+<%#= link_to 'List of All artists', artists_path %>
