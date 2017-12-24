@@ -5,6 +5,7 @@ class SongsController < ApplicationController
   end
 
 def show #will have template
+  @song = Song.find(params[:id])
 end
 
 def new #display the form

@@ -1,8 +1,9 @@
 <%= link_to 'Add Song', new_song_path %>
+<%#= link_to 'View Artists', artist_path %>
 
 <% @songs.each do |song| %>
 <p>
-    Name: <%= song.name %> <br />
-    Genre: <%= song.genre %> | <%= link_to 'Edit', edit_song_path(song) %>
+    Name: <%= song.name %> <br /> | <%= link_to '', songs_path(@song) %> <!--connect this to artists. -->
+    Genre: <%= song.genre %>
  </p>
 <% end %>

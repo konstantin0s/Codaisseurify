@@ -1,0 +1,20 @@
+<h1>Name: <%= @artist.name %></h1>
+<%#= image_tag @artist.image_url %>
+
+
+<h4>List of Songs</h4>
+
+<% if @artist.songs.any? %>
+  <ul>
+    <% @artist.songs.each do |song| %>
+      <li><%= song.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are songs of this artist.</p>
+<% end %>
+
+
+<%= link_to 'Back', artists_path %>
+
+  <%= link_to "[Edit]", edit_artist_path(@artist.id) %>
