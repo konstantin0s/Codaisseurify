@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:show]
+  before_action :set_song, only: [:edit, :update, :destroy]
+  before_action :set_artist
 
   def index #will have template
   @song = Song.all
@@ -35,28 +36,32 @@ class SongsController < ApplicationController
 
 
 
-
-
-def destroy
-  song = Song.find(params[:id])
-  @artist = song.artist
-  if song.destroy
-    redirect_to artist_path(@artist), notice: "SOng deleted."
-  else
-    redirect_to @artist, notice: "Try again to delete it."
+  def destroy
+    @artist = Artist.find(params[:artist_id])
+    @song = @artist.songs.find(params[:id])
+    @song.destroy
+    redirect_to @artist
   end
-end
 
-private
 
-def set_song
-   @song = Song.find(params[:id])
- end
+    private
 
-def song_params
-  params
-  .require(:song)
-  .permit(:title, :genre, :artist_id)
-end
+        def set_artist
+          @artist = Artist.find(params[:artist_id])
+        end
+
+        def redirect_to_artist
+          redirect_to artist_path(@artist.id)
+        end
+
+        def set_song
+           @song = Song.find(params[:artist_id])
+         end
+
+        def song_params
+          params.require(:song).permit(:title, :genre, :artist_id)
+        end
+
+
 
 end

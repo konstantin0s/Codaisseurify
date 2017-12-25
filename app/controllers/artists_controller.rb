@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
- before_action :artist_status, only: [:show, :edit, :update, :destroy]
+ before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   def index #will have template
     @artists = Artist.all
@@ -42,22 +42,29 @@ def update #save changes
 
 end
 
+#def destroy_song
+#    @song = Song.find(params[:id])
+#    @song.destroy
+#    redirect_to artists_path
+#  end
 
 def destroy
-  #will destroy and redirect
-  if @artist.destroy
-    redirect_to root_path, notice: "Artist no longer exists."
-  else
-    redirect_to @artist, notice: "Artist cannot be deleted. Try again!"
+      @artist = Artist.find(params[:id])
+    @artist.destroy
+    redirect_to artists_path
   end
-end
 
-def artist_status
 
-  @artist = Artist.find(params[:id])
-end
 
 private
+
+def set_artist
+     @artist = Artist.find(params[:id])
+   end
+
+   def set_songs
+     @songs = Artist.find(params[:artist_id]).songs
+   end
 
 def allowed_params
     params.require(:artist).permit(:name, :image_url)

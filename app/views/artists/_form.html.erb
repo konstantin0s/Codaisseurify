@@ -2,6 +2,18 @@
 
 <%= form_for @artist , html: { multipart: true } do |f| %>
 
+
+   <% if @artist.errors.any? %>
+     <h2>Errors</h2>
+      <ul>
+  <% @artist.errors.full_messages.each do |message|%>
+      <li><%= message %></li>
+  <% end %>
+     </ul>
+  <% end %>
+
+
+
 <%= f.label :name %> <br />
 <%= f.text_field :name %> <br /> <br />
 

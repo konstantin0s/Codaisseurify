@@ -1,5 +1,7 @@
 
 <p id="notice"><%= notice %></p>
+<%= link_to "Edit your favorite artist.", edit_artist_path(@artist) %> <br/>
+
 <h1>Singer/ Artist: <%= @artist.name %></h1>
  <%= image_tag @artist.image_url %>
 
@@ -8,10 +10,14 @@
 <% if @artist.songs.any? %>
   <ul>
     <% @artist.songs.each do |song| %>
-      <li>Song title:<%= song.title %></li>
-      <li>Song genre:<%= song.genre %></li>
+    <ul>
+      <li>Song title: <%= song.title %></li>
+      <li>Song genre: <%= song.genre %></li>
+          <%= link_to "[Delete Song]", artist_song_path(song), method: :delete, data: { confirm: "Are you sure?" } %>
+    </ul>
       <br />
     <% end %>
+
   </ul>
 <% else %>
   <p>This artist has no songs yet.</p>
@@ -22,6 +28,8 @@
 <p><h2>Add a new song</h2><%#= render 'songs/form' %></p>
 
 <%= form_for([@artist, Song.new]) do |form| %>
+
+
   <p><%= form.label :title %></p>
   <p><%= form.text_field :title %></p>
 
