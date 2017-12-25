@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
 
 def show #will have template
   @artist = Artist.find(params[:id])
+  @songs = @artist.songs
 end
 
 def new #display the form
@@ -60,7 +61,7 @@ private
 
 def allowed_params
     params.require(:artist).permit(:name, :image_url)
-  
+
 end
 
 

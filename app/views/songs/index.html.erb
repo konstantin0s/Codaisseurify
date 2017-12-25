@@ -4,7 +4,7 @@
 <% @songs.each do |song| %>
 <p>
     Name: <%= song.title %> <br />
-    <%= link_to 'Artist',  artist_path(@artist) %> <!--connect this to artists. -->
+    <%= link_to 'Artist',  artist_path(artist) %> <!--connect this to artists. -->
     <br />
 
     Genre: <%= song.genre %>

@@ -1,9 +1,9 @@
-<%= render 'songs/form' %>
 
+<p id="notice"><%= notice %></p>
 <h1>Singer/ Artist: <%= @artist.name %></h1>
  <%= image_tag @artist.image_url %>
 
-<h4>List of it's own Songs</h4>
+<h4>List of artists Songs</h4>
 
 <% if @artist.songs.any? %>
   <ul>
@@ -12,13 +12,20 @@
     <% end %>
   </ul>
 <% else %>
-  <p>There are songs of this artist.</p>
+  <p>This artist has no songs yet.</p>
 <% end %>
+<br />
+<br />
+
+<p><h2>Add a new song</h2><%= render 'songs/form' %></p>
 
 
 
 <%#= link_to 'View artists', artists_path %>
 
   <%#= link_to "Edit", edit_artist_path(@artist.id) %>
+
+  <br />
+  <br />
 
   <%= link_to "Delete", artist_path(@artist), method: :delete, data: { confirm: "Are you sure?" } %>

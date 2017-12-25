@@ -1,12 +1,39 @@
 class SongsController < ApplicationController
 
+  def index #will have template
+    #@artists = Artist.all
+  end
+
+  def show #will have template
+
+  end
+
+  def new #display the form
+
+  end
+
+
+
+  def edit #display for the existing song
+  #will have template
+  @song = Song.find(params[:id])
+  end
+
+
+
+
+
   def create
-  @artist = Artist.find(params[:artist_pathid])
-  @song = Song.new(song_params)
-  @song.artist_id = params[:artist_id]
-  @song.save
-  redirect_to artist_path(@artist), notice: "Song added."
+    artist = Artist.find params[:artist_id]
+        songs = artist.songs.new params[:song]
+        song.save
+        flash[:notice] = 'Song saved'
+        redirect_to artist_path(artist)
 end
+
+
+
+
 
 def destroy
   song = Song.find(params[:id])
