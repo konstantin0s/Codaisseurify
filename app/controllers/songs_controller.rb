@@ -33,7 +33,7 @@ end
     @song = Song.new(song_params)
     @song.artist = Artist.find(params[:artist_id])
     if @song.save
-      redirect_to @song.artist, notice: "Song added."
+      redirect_to @song.artist, notice: "Song successfully added."
     else
       render 'new'
     end
@@ -45,7 +45,7 @@ end
     #@artist = Artist.find(params[:artist_id])
     @song = @artist.songs.find(params[:id])
     @song.destroy
-    redirect_to artist_path(@artist.id)
+    redirect_to artist_path(@artist.id), notice: "Song successfully deleted."
   end
 
 
