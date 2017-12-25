@@ -49,6 +49,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+gem 'simplecov', require: false, group: :test
+
 
 group :test do
   gem 'capybara', '~> 2.9', '>= 2.9.1'
