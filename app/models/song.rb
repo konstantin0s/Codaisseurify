@@ -4,6 +4,7 @@ belongs_to :artist, optional: true
 
  validates :title, presence: true
  validates :genre, presence: true
+ validates :artist, presence: true
 
 
 

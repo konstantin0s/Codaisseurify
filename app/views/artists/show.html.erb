@@ -13,7 +13,7 @@
     <ul>
       <li>Song title: <%= song.title %></li>
       <li>Song genre: <%= song.genre %></li>
-          <%= link_to "[Delete Song]", artist_song_path(song), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "[Delete Song]", artist_song_path(@artist, song), method: :delete, data: { confirm: "Are you sure?" } %>
     </ul>
       <br />
     <% end %>
