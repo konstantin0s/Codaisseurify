@@ -1,19 +1,26 @@
-
+<div class="notice">
 <p id="notice"><%= notice %></p>
-<%= link_to "Edit your favorite artist.", edit_artist_path(@artist) %> <br/>
+</div>
+<div class="artist">
+   <h1>Singer/ Artist: <%= @artist.name %></h1>
+   <%= link_to "Edit your favorite artist.", edit_artist_path(@artist), class: "btn btn-default" %> <br/>
+</div>
+   <div class="delete-artist">
+   <%= link_to "Delete Artist", artist_path(@artist), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
+ </div>
+   <div class="imagine">
+     <%= image_tag @artist.image_url %>
+   </div>
+    <div class="playlist">
+   <h4>Playlist: </h4>
 
-<h1>Singer/ Artist: <%= @artist.name %></h1>
- <%= image_tag @artist.image_url %>
-
-<h4>List of artists Songs</h4>
-
-<% if @artist.songs.any? %>
-  <ul>
+    <% if @artist.songs.any? %>
+  <ul class="ul-no-style">
     <% @artist.songs.each do |song| %>
-    <ul>
+    <ul class="ul-no-style">
       <li>Song title: <%= song.title %></li>
       <li>Song genre: <%= song.genre %></li>
-          <%= link_to "[Delete Song]", artist_song_path(@artist, song), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Delete Song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
     </ul>
       <br />
     <% end %>
@@ -24,7 +31,10 @@
 <% end %>
 <br />
 <br />
+</div>
 
+
+   <div class="new-song">
 <p><h2>Add a new song</h2><%#= render 'songs/form' %></p>
 
 <%= form_for([@artist, Song.new]) do |form| %>
@@ -36,10 +46,9 @@
   <p><%= form.label :genre, 'Genre' %></p>
   <p><%= form.text_field :genre %></p>
 
-  <%= form.submit 'Save' %>
+  <%= form.submit 'Save', class: "btn btn-default" %>
 <% end %>
-
-
+</div>
 
 <%#= link_to 'View artists', artists_path %>
 
@@ -47,5 +56,3 @@
 
   <br />
   <br />
-
-  <%= link_to "Delete", artist_path(@artist), method: :delete, data: { confirm: "Are you sure?" } %>

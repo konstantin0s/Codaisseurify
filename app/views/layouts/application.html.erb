@@ -2,13 +2,14 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Codaisseurify</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, inital-scale=1">
   </head>
 
   <body>
@@ -18,9 +19,9 @@
   <br><br>
   <hr>
 
-  <%= link_to "See all artists", root_path %>
+  <%= link_to "See all artists", root_path, class: "btn btn-default" %>
 
-  <%= link_to "Create a new artist", new_artist_path %>
+  <%= link_to "Create a new artist", new_artist_path, class: "btn btn-default" %>
 
 
   </body>
