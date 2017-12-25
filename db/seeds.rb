@@ -16,9 +16,9 @@ artists_count = Artist.count
 puts "#{artists_count} artists were created."
 
 
-music1 = Song.create!( { name: "Livin la vida loca", genre: "latino", artist: artist1 } ),
-music2 = Song.create!( { name: "Si senior", genre: "dance", artist: artist1 } ),
-music3= Song.create!( { name: "Per tu amor", genre: "love", artist: artist2 } )
+music1 = Song.create!( { title: "Livin la vida loca", genre: "latino", artist: artist1 } ),
+music2 = Song.create!( { title: "Si senior", genre: "dance", artist: artist1 } ),
+music3= Song.create!( { title: "Per tu amor", genre: "love", artist: artist2 } )
 
 
 

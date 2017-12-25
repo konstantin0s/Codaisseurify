@@ -8,7 +8,9 @@
 <% if @artist.songs.any? %>
   <ul>
     <% @artist.songs.each do |song| %>
-      <li><%= song.title %></li>
+      <li>Song title:<%= song.title %></li>
+      <li>Song genre:<%= song.genre %></li>
+      <br />
     <% end %>
   </ul>
 <% else %>
@@ -17,7 +19,17 @@
 <br />
 <br />
 
-<p><h2>Add a new song</h2><%= render 'songs/form' %></p>
+<p><h2>Add a new song</h2><%#= render 'songs/form' %></p>
+
+<%= form_for([@artist, Song.new]) do |form| %>
+  <p><%= form.label :title %></p>
+  <p><%= form.text_field :title %></p>
+
+  <p><%= form.label :genre, 'Genre' %></p>
+  <p><%= form.text_field :genre %></p>
+
+  <%= form.submit 'Save' %>
+<% end %>
 
 
 

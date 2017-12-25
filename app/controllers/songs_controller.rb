@@ -1,15 +1,15 @@
 class SongsController < ApplicationController
+  before_action :set_song, only: [:show]
 
   def index #will have template
-    #@artists = Artist.all
+  @song = Song.all
   end
 
   def show #will have template
-
   end
 
   def new #display the form
-
+@song = Song.new
   end
 
 
@@ -24,12 +24,14 @@ class SongsController < ApplicationController
 
 
   def create
-    artist = Artist.find params[:artist_id]
-        songs = artist.songs.new params[:song]
-        song.save
-        flash[:notice] = 'Song saved'
-        redirect_to artist_path(artist)
-end
+    @song = Song.new(song_params)
+    @song.artist = Artist.find(params[:artist_id])
+    if @song.save
+      redirect_to @song.artist, notice: "Song added."
+    else
+      render 'new'
+    end
+  end
 
 
 
@@ -47,10 +49,14 @@ end
 
 private
 
+def set_song
+   @song = Song.find(params[:id])
+ end
+
 def song_params
   params
   .require(:song)
-  .permit(:name)
+  .permit(:title, :genre, :artist_id)
 end
 
 end
