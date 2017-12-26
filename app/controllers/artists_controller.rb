@@ -42,7 +42,7 @@ def update #save changes
     image_params.each do |image|
       @artist.photos.create(image: image)
     end
-    redirect_to artists_path
+    redirect_to artist_path
   else
     render 'new'
   end

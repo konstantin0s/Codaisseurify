@@ -2,8 +2,12 @@
 
 <%= render 'form', artist: @artist %> <br/>
 
+<%= render 'photos/list', artist: @artist %> <br/>
 
 
 
-<%= link_to 'See the artist', artist_path(@artist), class: "btn btn-default" %> 
+
+
+
+<%= link_to 'See the artist', artist_path(@artist), class: "btn btn-default" %>
 <%#= link_to 'List of All artists', artists_path %>
