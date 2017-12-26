@@ -10,7 +10,7 @@
  </div>
    <div class="imagine">
      <%#= image_tag @artist.image_url %>
-     <h4>Photos</h4>
+     <h4>Photos of the artist</h4>
        <% if @artist.photos.any? %>
      <% @artist.photos.each do |photo| %>
      <div class="panel panel-default">

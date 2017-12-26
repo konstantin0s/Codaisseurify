@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :artists do
       resources :songs, :only => [:create, :new, :destroy]
       resources :photos, :only => [:create, :new, :destroy]
-  end
+      end
 
   #resources :photos
 
