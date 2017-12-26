@@ -9,8 +9,12 @@
    <%= link_to "Delete Artist", artist_path(@artist), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
  </div>
    <div class="imagine">
-     <%= image_tag @artist.image_url %>
-   </div>
+     <%#= image_tag @artist.image_url %>
+     <h4>Artists photo</h4>
+     <% @artist.photos.each do |photo| %>
+       <%= image_tag photo.image %>
+     <% end %>
+   </div> <br />
     <div class="playlist">
    <h4>Playlist: </h4>
 
@@ -34,6 +38,7 @@
 </div>
 
 
+
    <div class="new-song">
 <p><h2>Add a new song</h2><%#= render 'songs/form' %></p>
 
@@ -49,6 +54,7 @@
   <%= form.submit 'Save', class: "btn btn-default" %>
 <% end %>
 </div>
+
 
 <%#= link_to 'View artists', artists_path %>
 

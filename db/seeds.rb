@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Artist.destroy_all
 Song.destroy_all
+Photo.destroy_all
 
 
 artist1 = Artist.create!(name: "Elvis Presley", image_url: "https://images-na.ssl-images-amazon.com/images/I/C1OaF6U9TDS._SL1000_.png")
@@ -20,7 +21,15 @@ music1 = Song.create!( { title: "Livin la vida loca", genre: "latino", artist: a
 music2 = Song.create!( { title: "Si senior", genre: "dance", artist: artist1 } ),
 music3= Song.create!( { title: "Per tu amor", genre: "love", artist: artist2 } )
 
-
-
 songs_count = Song.count
 puts "#{songs_count} songs were created."
+
+#photos
+photo1 = Photo.create!(remote_image_url: "https://res.cloudinary.com/konstantin0s/image/upload/t_media_lib_thumb/v1514275273/tmp_KmXOpO_7dbb0d56aa4849ac_main_dwdlwv.jpg", artist: artist1)
+#photo2 = Photo.create!(remote_image_url: "https://res.cloudinary.com/konstantin0s/image/upload/t_media_lib_thumb/v1514274899/C1OaF6U9TDS._SL1000__otnflq.jpg", artist: artist1)
+photo3 = Photo.create!(remote_image_url: "https://res.cloudinary.com/konstantin0s/image/upload/t_media_lib_thumb/v1514275126/032717-lady-gaga-best-beauty-lead_gyfmcl.jpg", artist: artist2)
+#photo4 = Photo.create!(remote_image_url: "https://res.cloudinary.com/konstantin0s/image/upload/t_media_lib_thumb/v1514274899/ss9-ojz7_cgdw7v.jpg", artist: artist2)
+
+
+photos_count = Photo.count
+puts "#{photos_count} photos were created."
