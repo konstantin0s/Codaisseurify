@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:dnagir/database_cleaner.git
+  revision: 0c0aa44f13ae392000a6f506b62d5d1602cb4e53
+  branch: postgre_jruby_issue
+  specs:
+    database_cleaner (0.7.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -237,6 +244,7 @@ DEPENDENCIES
   carrierwave (= 0.11.2)
   cloudinary (= 1.2.3)
   coffee-rails (~> 4.2)
+  database_cleaner!
   factory_bot_rails
   faker
   jbuilder (~> 2.5)
