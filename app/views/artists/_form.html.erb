@@ -3,6 +3,7 @@
 
 
 <div class="form-container">
+
      <%= form_for @artist, html: { multipart: true } do |f| %>
 
    <div class="form-error">
@@ -24,8 +25,21 @@
     <%= f.label :name %> <br />
     <%= f.text_field :name %> <br /> <br />
 
-    <%= f.label :image_url %> </br >
-    <%= f.text_field :image_url %> </br ></br >
+    <%#= f.label :image_url %> </br >
+    <%#= f.text_field :image_url %> </br ></br >
+
+
+    <div class="form-group">
+  <span class="btn btn-default">
+    Upload Photos
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  </span>
+</div>
+
+<div id="photos">
+  <%= render 'photos/list' %>
+</div>
+
 
 
 

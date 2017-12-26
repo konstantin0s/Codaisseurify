@@ -10,10 +10,16 @@
  </div>
    <div class="imagine">
      <%#= image_tag @artist.image_url %>
-     <h4>Artists photo</h4>
+     <h4>Photos</h4>
      <% @artist.photos.each do |photo| %>
-       <%= image_tag photo.image %>
+     <div class="panel panel-default">
+       <div class="panel-heading">
+         <%= image_tag photo.image.thumbnail %>
+       </div>
+     </div>
      <% end %>
+
+
    </div> <br />
     <div class="playlist">
    <h4>Playlist: </h4>
