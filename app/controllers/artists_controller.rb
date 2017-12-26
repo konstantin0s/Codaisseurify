@@ -8,6 +8,7 @@ class ArtistsController < ApplicationController
 def show #will have template
   @artist = Artist.find(params[:id])
   @songs = @artist.songs
+   @photos = @artist.photos
 end
 
 def new #display the form
@@ -20,7 +21,10 @@ def create #save new song
     @artist = Artist.new(allowed_params)
 
     if @artist.save
-      redirect_to artists_path
+      image_params.each do |image|
+      @artist.photos.create(image: image)
+    end
+      redirect_to artists_path, notice: "You just made an artist."
     else
       render 'new'
     end
@@ -35,6 +39,9 @@ def update #save changes
   #will save and redirect
   @artist = Artist.find(params[:id])
   if @artist.update_attributes(allowed_params)
+    image_params.each do |image|
+      @artist.photos.create(image: image)
+    end
     redirect_to artists_path
   else
     render 'new'
@@ -58,6 +65,10 @@ def destroy
 
 private
 
+def image_params
+      params[:images].present? ? params.require(:images) : []
+    end
+
 def set_artist
      @artist = Artist.find(params[:id])
    end
@@ -67,7 +78,7 @@ def set_artist
    end
 
 def allowed_params
-    params.require(:artist).permit(:name, :image_url)
+    params.require(:artist).permit(:name, :image)
 
 end
 
