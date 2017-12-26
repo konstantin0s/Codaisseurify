@@ -9,7 +9,7 @@
     <div class="thumbnail">
       <div class="caption">
        <p>
-         Name: <%= artist.name %> <br />
+         Artist: <%= artist.name %> <br />
          <%= link_to 'View Artist', artist_path(artist), class: "btn btn-default" %>
          <%= link_to "Delete Artist", artist_path(artist), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
 
