@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-ActiveRecord::Base.connection.disable_referential_integrity do
+#ActiveRecord::Base.connection.disable_referential_integrity do
 
 Photo.destroy_all
 Artist.destroy_all
@@ -39,4 +39,4 @@ puts "#{photos_count} photos were created."
 
 
 
-end
+#end
