@@ -33,12 +33,13 @@ end
 def edit #display for the existing song
   #will have template
   @artist = Artist.find(params[:id])
+  @photos = @artist.photos
 end
 
 def update #save changes
   #will save and redirect
-  @artist = Artist.find(params[:id])
-  if @artist.update_attributes(allowed_params)
+  #@artist = Artist.find(params[:id])
+  if @artist.update(allowed_params)
     image_params.each do |image|
       @artist.photos.create(image: image)
     end
@@ -48,12 +49,6 @@ def update #save changes
   end
 
 end
-
-#def destroy_song
-#    @song = Song.find(params[:id])
-#    @song.destroy
-#    redirect_to artists_path
-#  end
 
 def destroy
       @artist = Artist.find(params[:id])

@@ -7,9 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 ActiveRecord::Base.connection.disable_referential_integrity do
 
+Photo.destroy_all
 Artist.destroy_all
 Song.destroy_all
-Photo.destroy_all
+
 
 
 artist1 = Artist.create!(name: "Elvis Presley", image_url: "https://images-na.ssl-images-amazon.com/images/I/C1OaF6U9TDS._SL1000_.png")

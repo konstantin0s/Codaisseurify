@@ -1,0 +1,2 @@
+class AddPhotoToArtistsController < ApplicationController
+end
