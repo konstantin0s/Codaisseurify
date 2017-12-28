@@ -3,6 +3,7 @@ class ArtistsController < ApplicationController
 
   def index #will have template
     @artists = Artist.all
+    @artist = Artist.new
   end
 
 def show #will have template
