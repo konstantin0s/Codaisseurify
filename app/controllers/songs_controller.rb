@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:show, :edit, :update, :destroy]
+  #before_action :set_song, only: [:show, :edit, :update, :destroy]
   before_action :set_artist #, only: [:show, :edit, :update, :destroy]
 
   def index #will have template
@@ -7,6 +7,7 @@ class SongsController < ApplicationController
   end
 
   def show #will have template
+    @artist = set_artist
     @song = Song.find(params[:id])
   end
 
@@ -52,9 +53,9 @@ end
     private
 
 
-        def redirect_to_artist
-          redirect_to artist_path(@artist.id)
-        end
+        #def redirect_to_artist
+        #  redirect_to artist_path(@artist.id)
+        #end
 
 
         def song_params
