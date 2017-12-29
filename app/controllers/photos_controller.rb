@@ -6,25 +6,25 @@ class PhotosController < ApplicationController
       photo = Photo.find(params[:id])
       @artist = photo.artist
       if photo.destroy
-        redirect_to artist_path(@artist), notice: "Photo deleted."
+        redirect_to artist_path(@artist), notice: "The photo is gone."
       else
-        redirect_to @artist, notice: "Your photo is not deleted."
+        redirect_to @artist, notice: "The photo is not deleted."
       end
     end
 
-    private
+    #private
 
-    def set_artist
-      @artist = Artist.find(params[:artist_id])
-    end
+    #def set_artist
+      #@artist = Artist.find(params[:artist_id])
+    #end
 
-    def image_params
-          params[:images].present? ? params.require(:images) : []
-        end
+    #def image_params
+    #      params[:images].present? ? params.require(:images) : []
+    #    end
 
-        def set_photo
-          @photo = Photo.find(params[:id])
-        end
+    #    def set_photo
+    #      @photo = Photo.find(params[:id])
+    #    end
 
 
 end
