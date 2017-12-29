@@ -3,7 +3,6 @@ class ArtistsController < ApplicationController
 
   def index #will have template
     @artists = Artist.all
-    @artist = Artist.new
   end
 
 def show #will have template
@@ -22,7 +21,9 @@ def create #save new song
     @artist = Artist.new(allowed_params)
 
     if @artist.save
-    add_photo
+      image_params.each do |image|
+      @artist.photos.create(image: image)
+    end
       redirect_to artists_path, notice: "You just made an artist."
     else
       render 'new'
@@ -31,15 +32,16 @@ end
 
 def edit #display for the existing song
   #will have template
-  #@artist = Artist.find(params[:id])
-  #@photos = @artist.photos
+  @artist = Artist.find(params[:id])
 end
 
 def update #save changes
   #will save and redirect
-  #@artist = Artist.find(params[:id])
-  if @artist.update(allowed_params)
-  add_photo
+  @artist = Artist.find(params[:id])
+  if @artist.update_attributes(allowed_params)
+    image_params.each do |image|
+      @artist.photos.create(image: image)
+    end
     redirect_to artist_path
   else
     render 'new'
@@ -47,38 +49,33 @@ def update #save changes
 
 end
 
+#def destroy_song
+#    @song = Song.find(params[:id])
+#    @song.destroy
+#    redirect_to artists_path
+#  end
+
 def destroy
-    if @artist.destroy
-      redirect_to root_path, notice: "Artist deleted."
-    else
-      redirect_to @artist, notice: "Seems impossible to delete this artist."
-    end
+      @artist = Artist.find(params[:id])
+    @artist.destroy
+    redirect_to artists_path
   end
 
 
 
 private
 
-
-def add_photo
-    if !image_params.nil?
-      @artist.photo.destroy unless @artist.photo.nil?
-      @artist.photo = Photo.create(image: image_params)
-    end
-  end
-
-
 def image_params
-      params[:images].present? ? params.require(:images) : nil
+      params[:images].present? ? params.require(:images) : []
     end
 
 def set_artist
      @artist = Artist.find(params[:id])
    end
 
-   #def set_songs
-    # @songs = Artist.find(params[:artist_id]).songs
-   #end
+   def set_songs
+     @songs = Artist.find(params[:artist_id]).songs
+   end
 
 def allowed_params
     params.require(:artist).permit(:name, :image)
