@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
+
 gem 'bootstrap_form'
 
 gem 'bootstrap-sass', '~>3.3.6'
@@ -57,7 +58,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-
+    gem 'pg', '~> 0.18'
 end
 
 
