@@ -32,7 +32,7 @@ end
 
   def create
     @song = Song.new(song_params)
-    @song.artist = Artist.find(params[:artist_id])
+    @song.artist.id = @artist.id
     if @song.save
       redirect_to @song.artist, notice: "Song successfully added."
     else
