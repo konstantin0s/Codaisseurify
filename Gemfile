@@ -49,7 +49,10 @@ group :development, :test do
    gem 'factory_bot_rails'
    gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'selenium-webdriver'
+  gem "chromedriver-helper"
 end
 
 group :development do
@@ -61,6 +64,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
 
+
 end
 
 gem 'simplecov', require: false, group: :test
@@ -68,6 +72,7 @@ gem 'simplecov', require: false, group: :test
 
 group :test do
   gem 'capybara', '~> 2.9', '>= 2.9.1'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -76,6 +76,13 @@ end
       end
    end
 
+   def remove_all
+     @song = @artist.songs.find(params[:id])
+      Song.delete_all
+      flash[:notice] = "You have removed all songs!"
+      redirect_to artist_path(@artist)
+   end
+
 
     private
 

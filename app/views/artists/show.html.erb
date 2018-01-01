@@ -6,7 +6,7 @@
       <%= link_to "Edit your favorite artist.", edit_artist_path(@artist), class: "btn btn-default" %> <br/>
 </div>
    <div class="delete-artist">
-     <%= link_to "Delete Artist", artist_path(@artist.id), class: "delete_artist btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
+     <span><%= link_to "Delete Artist", artist_path(@artist.id), class: "delete_artist btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%></span>
 </div>
    <div class="imagine">
      <%#= image_tag @artist.image_url %>
@@ -56,11 +56,11 @@
     <% @artist.songs.each do |song| %>
     <ul class="ul-no-style">
 
-      <li id = "<%= song.id %>"> Title: <%= song.title %></br>
+      <li id ="<%= song.id %>"> Title: <%= song.title %></br>
            Genre: <%= song.genre %>
        </li>
 
-        <a href="#" id="deletesong">  <%= link_to "Delete Song", artist_song_path(@artist, song), class: "delete_song btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %></a>
+       <%= link_to "Delete Song", artist_song_path(@artist, song), id:"delete", class: "delete_song btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
     </ul>
       <br />
     <% end %>
@@ -72,8 +72,8 @@
 <br />
 <br />
 </div>
+<%= link_to "Delete All", :method => :get, :class => 'btn btn-primary' %>
 
- <a href="#" id= "deleteallsongs">  Delete All Songs</a>
 
 
 </section>
