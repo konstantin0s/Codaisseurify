@@ -1,30 +1,51 @@
 <div class="notice">
-<p id="notice"><%= notice %></p>
+      <p id="notice"><%= notice %></p>
 </div>
 <div class="artist">
-   <h1>Singer/ Artist: <%= @artist.name %></h1>
-   <%= link_to "Edit your favorite artist.", edit_artist_path(@artist), class: "btn btn-default" %> <br/>
+      <h1>Singer/ Artist: <%= @artist.name %></h1>
+      <%= link_to "Edit your favorite artist.", edit_artist_path(@artist), class: "btn btn-default" %> <br/>
 </div>
    <div class="delete-artist">
-   <%= link_to "Delete Artist", artist_path(@artist.id), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
- </div>
+     <%= link_to "Delete Artist", artist_path(@artist.id), class: "delete_artist btn btn-default", method: :delete, data: { confirm: "Are you sure?" }%>
+</div>
    <div class="imagine">
      <%#= image_tag @artist.image_url %>
-     <h4>Photos of the artist</h4>
-       <% if @artist.photos.any? %>
-     <% @artist.photos.each do |photo| %>
-     <div class="panel panel-default">
-       <div class="panel-heading">
-         <%= image_tag photo.image.thumbnail %>
-         <%= link_to "Delete Photo", artist_photo_path(@artist, photo), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
-       </div>
-     </div>
-     <% end %>
-     <div class="panel-body">
-     </div>
-   <% end %>
+      <h4>Photos of the artist</h4>
+        <% if @artist.photos.any? %>
+          <% @artist.photos.each do |photo| %>
+             <div class="panel panel-default">
+              <div class="panel-heading">
+              <%= image_tag photo.image.thumbnail %>
+               <%= link_to "Delete Photo", artist_photo_path(@artist, photo), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
+              </div>
+             </div>
+          <% end %>
+ <div class="panel-body">
+ </div>
+         <% end %>
+</div> <br />
 
-   </div> <br />
+
+
+<section id="songz">
+  <div class="new-song">
+
+    <h1><%#= link_to "Add a new song", "#", id: "song-link"%></h1>
+
+    <%= form_for([@artist, Song.new]) do |form| %>
+
+
+    <p><%= form.label :title %></p>
+    <p><%= form.text_field :title %></p>
+
+    <p><%= form.label :genre, 'Genre' %></p>
+    <p><%= form.text_field :genre %></p>
+
+<%= form.submit 'Add Song', class: "create_song btn btn-default", :remote => true %>
+    <% end %>
+
+  </div> <br />
+
 
 
     <div class="playlist">
@@ -34,9 +55,12 @@
   <ul class="ul-no-style">
     <% @artist.songs.each do |song| %>
     <ul class="ul-no-style">
-      <li>Song title: <%= song.title %></li>
-      <li>Song genre: <%= song.genre %></li>
-          <%= link_to "Delete Song", artist_song_path(@artist, song), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
+
+      <li id = "<%= song.id %>"> Title: <%= song.title %></br>
+           Genre: <%= song.genre %>
+       </li>
+
+        <a href="#" id="deletesong">  <%= link_to "Delete Song", artist_song_path(@artist, song), class: "delete_song btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %></a>
     </ul>
       <br />
     <% end %>
@@ -49,23 +73,10 @@
 <br />
 </div>
 
+ <a href="#" id= "deleteallsongs">  Delete All Songs</a>
 
 
-   <div class="new-song">
-<p><h2>Add a new song</h2><%#= render 'songs/form' %></p>
-
-<%= form_for([@artist, Song.new]) do |form| %>
-
-
-  <p><%= form.label :title %></p>
-  <p><%= form.text_field :title %></p>
-
-  <p><%= form.label :genre, 'Genre' %></p>
-  <p><%= form.text_field :genre %></p>
-
-  <%= form.submit 'Save', class: "btn btn-default" %>
-<% end %>
-</div>
+</section>
 
 
 <%#= link_to 'View artists', artists_path %>

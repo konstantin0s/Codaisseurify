@@ -1,9 +1,11 @@
 class SongsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_song, only: [:show, :edit, :update, :destroy]
   before_action :set_artist #, only: [:show, :edit, :update, :destroy]
 
+
   def index #will have template
-  @song = Song.all
+    @song = Song.all
   end
 
   def show #will have template
@@ -30,15 +32,36 @@ end
 
 
 
+
+#def create
+#  @song = Song.new(song_params)
+#  @song.artist = @artist
+#  if @song.save
+#   redirect_to @song.artist, notice: "Song successfully added."
+#  else
+#    @songs = Song.all
+#    respond_to do |format|
+#  format.html { render 'new' }
+#  format.js
+#  end
+#end
+#end
+
   def create
+     @artist = Artist.find(params[:artist_id])
     @song = Song.new(song_params)
-    @song.artist.id = @artist.id
-    if @song.save
-      redirect_to @song.artist, notice: "Song successfully added."
-    else
-      render 'new'
-    end
-  end
+    @song.artist = @artist
+    if @song.valid?
+      @song.save
+         respond_to do |format|
+         format.html { redirect_to artist_path(@artist), notice: "Song added." }
+         format.json { render json: @song }
+       end
+       else
+      render :new
+     end
+   end
+
 
 
 
@@ -46,8 +69,12 @@ end
     #@artist = Artist.find(params[:artist_id])
     @song = @artist.songs.find(params[:id])
     @song.destroy
-    redirect_to artist_path(@artist.id), notice: "Song successfully deleted."
-  end
+
+    respond_to do |format|
+        format.html { redirect_to artist_path(@artist), notice: "Song successfully deleted." }
+        format.json { render json: @artist }
+      end
+   end
 
 
     private

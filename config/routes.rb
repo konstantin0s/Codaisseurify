@@ -10,4 +10,11 @@ Rails.application.routes.draw do
 
       resources :photos, only: [:create, :new, :destroy]
       end
+
+      namespace :api do
+          resources :artists do
+            resources :songs
+          end
+        end
+
 end

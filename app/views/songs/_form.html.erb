@@ -1,10 +1,12 @@
 
-<%= form_for :song do |f| %>
+<%= form_for :song, remote: true do |f| %>
 <% if @song.errors.any? %>
-  <h2>Errors</h2>
+  <h2>Errors: </h2>
    <ul>
 <% @song.errors.full_messages.each do |message|%>
-   <li><%= message %></li>
+<div class="error-wrapper">
+  <%= message %>
+</div>
 <% end %>
   </ul>
 <% end %>
@@ -14,7 +16,6 @@
 
 <%= f.label :genre %> <br />
 <%= f.text_field :genre %> <br /><br />
-
-<%= f.submit 'Save' %>
+<%= f.submit 'Add Song', class: "btn btn-default", id:"addsong" %>
 
 <% end %>
