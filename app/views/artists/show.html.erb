@@ -27,77 +27,27 @@
 
 
 
-<!-- <section id="songz">
-  <div class="new-song">
-    <a href="/songs/new" class="btn btn-default", id="newsong">Add Song</a>-->
-      <%#= link_to "New Song",  new_artist_song_path(@artist), class: "btn btn-default", id: "new_song"%>
-
-      <!-- <%= form_for([@artist, Song.new], remote: true) do |form| %>
+<%= link_to "Delete all songs", artist_path(@artist.id), class: "btn btn-default delete-all-songs" %>
 
 
-        <p><%= form.label :title %></p>
-        <p><%= form.text_field :title, id:"new-song" %></p>
-
-        <p><%= form.label :genre, 'Genre' %></p>
-        <p><%= form.text_field :genre, id:"new-genre"  %></p>
-
-        <%= form.submit 'Save', class: "btn btn-default" %>
-      <% end %> -->
-
-<!--
-  </div> <br />
-
-
-
-    <div class="playlist">
-   <h4>Playlist: </h4>
-
+<h4>Songs: </h4>
     <% if @artist.songs.any? %>
-  <ul class="ul-no-style">
-    <% @artist.songs.each do |song| %>
-       <ul id="createsong">
-         Song: <%= song.title %>
-    <%= song.genre %>
-       </li> -->
-  <%#= link_to "Delete Song", artist_song_path(@artist, song), id:"delete", class: "delete_song btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
-      <!-- <a href="#" class="delete_song" id="delete-song">Delete</a>
-    </ul>
-
-      <br />
+      <table class="table table-striped" id="song-list">
+        <%= render @songs %>
+      </table>
+      <% else %>
+        <p>This artist has no songs yet.</p>
     <% end %>
 
-  </ul>
-<% else %>
-  <p>This artist has no songs yet.</p>
-<% end %>
-<br />
-<br />
-</div>
-<%= link_to "Delete All", :method => :get, :class => 'btn btn-primary' %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Add new song</div>
 
+          <div class="panel-body">
+            <%= render 'songs/form' %>
+          </div>
+        </div>
 
-
-</section> -->
-
-
-
-<div class="container col-md-4" id="songz">
-  <% @artist.songs.each do |song| %>
-  <div class="song-block" id="<%= song.id %>">
-    <h4 class="song-title">Song: <%= song.title %></h3>
-    <h4><p>Genre: <%= song.genre %></h3>
-      <!-- <%= link_to "[Delete song]", artist_song_path(@artist.id, song.id), id: "remove-song-#{song.id}", method: :delete, data: {confirm: "Are you really sure?"} %> -->
-      <a href="#" class="delete-song" song-id="<%= song.id %>">[New delete link]</a>
-    </p>
-  </div>
-  <% end %>
-</div>
-
-<div class="container col-md-4">
-  <a href="#" id="delete-all"> [Delete all songs for <%= @artist.name %>]</a>
-  <hr>
-  <p>Add a new song for <%= @artist.name %>:</p>
-  <%= link_to "Add Song", new_artist_song_path(@artist.id), class: "btn btn-primary", id: "new_songs", remote: true %>
+  <%#= link_to "Add Song", new_artist_song_path(@artist.id), class: "btn btn-primary", id: "new_songs", remote: true %>
   <%#= render 'shared/new_song', song: @song %>
 </div>
 

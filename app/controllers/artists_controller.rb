@@ -8,19 +8,19 @@ class ArtistsController < ApplicationController
 
   end
 
+
 def show #will have template
   @artist = Artist.find(params[:id])
   @songs = @artist.songs
+  @song = Song.new
    @photos = @artist.photos
 end
 
 def new #display the form
-  #will have template
   @artist = Artist.new
 end
 
 def create #save new song
-  #will save and redirect
     @artist = Artist.new(allowed_params)
 
     if @artist.save
@@ -34,12 +34,12 @@ def create #save new song
 end
 
   def edit #display for the existing song
-  #will have template
     @artist = Artist.find(params[:id])
+     @photos = @artist.photos
   end
 
   def update #save changes
-  #will save and redirect
+
      @artist = Artist.find(params[:id])
   if @artist.update_attributes(allowed_params)
      image_params.each do |image|

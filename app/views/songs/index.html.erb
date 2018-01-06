@@ -1,14 +1,13 @@
-<%= link_to 'Add Song', artist_song_path(@artist.id), remote: true %>
+<%#= link_to 'Add Song', artist_song_path(@artist.id)%>
 <%#= link_to 'View Artists', artist_path %>
+<!-- 
+<h1>Songs</h1>
+<hr>
 
 <% @songs.each do |song| %>
-<p>
-    Name: <%= song.title %> <br />
-    <%= link_to 'Artist',  artist_path(artist) %> <!--connect this to artists. -->
-    <br />
-
-    Genre: <%= song.genre %>
- </p>
+    <p> <%= link_to song.title, artist_songs_path(song.id) %></p>
+    <hr>
 <% end %>
+<%= link_to "Add Song", new_artist_song_path, class: "btn btn-primary" %>
 
-<%= link_to 'View artists', artists_path %>
+<%= link_to 'View artists', artists_path %> -->
