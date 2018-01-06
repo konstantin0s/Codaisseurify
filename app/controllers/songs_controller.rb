@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
   before_action :set_song, only: [:show, :edit, :update, :destroy]
   before_action :set_artist #, only: [:show, :edit, :update, :destroy]
 
@@ -31,22 +31,6 @@ def update
 end
 
 
-
-
-#def create
-#  @song = Song.new(song_params)
-#  @song.artist = @artist
-#  if @song.save
-#   redirect_to @song.artist, notice: "Song successfully added."
-#  else
-#    @songs = Song.all
-#    respond_to do |format|
-#  format.html { render 'new' }
-#  format.js
-#  end
-#end
-#end
-
   def create
      @artist = Artist.find(params[:artist_id])
     @song = Song.new(song_params)
@@ -54,13 +38,15 @@ end
     if @song.valid?
       @song.save
          respond_to do |format|
-         format.html { redirect_to artist_path(@artist), notice: "Song added." }
-         format.json { render json: @song }
+         format.html { redirect_to artist_path(@artist.id), notice: "Song added." }
+         format.js
        end
        else
       render :new
      end
    end
+
+
 
 
 

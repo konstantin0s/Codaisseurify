@@ -1,3 +1,3 @@
-$('.create_song').bind('ajax:success', function() {
-        $(this).closest('tr').fadeIn();
-});
+$('#new_song').remove();
+$('#new_songs').show();
+$('#songz').append('<%= j render(@song) %>');

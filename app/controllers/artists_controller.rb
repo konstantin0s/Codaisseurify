@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
  before_action :set_artist, only: [:show, :edit, :update, :destroy]
- skip_before_action :verify_authenticity_token
+ #skip_before_action :verify_authenticity_token
 
 
   def index #will have template

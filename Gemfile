@@ -17,6 +17,8 @@ gem 'cloudinary', '1.2.3'
 
 gem 'jquery-rails'
 
+gem 'simple_form', '~> 3.5'
+
 
 ruby '2.4.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

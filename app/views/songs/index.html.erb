@@ -1,4 +1,4 @@
-<%= link_to 'Add Song', new_song_path, remote: true %>
+<%= link_to 'Add Song', artist_song_path(@artist.id), remote: true %>
 <%#= link_to 'View Artists', artist_path %>
 
 <% @songs.each do |song| %>
