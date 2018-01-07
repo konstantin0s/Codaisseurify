@@ -21,13 +21,14 @@
 var pathname = window.location.pathname;
 
 function createSong(title) {
-   var newSong = { title: title };
+    var newSong = { title: title };
 
   $.ajax({
     type: "POST",
     url:  "/api" + pathname + "/songs.json",
     data: JSON.stringify({
-      song: newSong
+       song: newSong
+
     }),
     contentType: "application/json",
     dataType: "json"

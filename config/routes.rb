@@ -5,12 +5,12 @@ Rails.application.routes.draw do
  root "artists#index"
 
    resources :artists do
-      resources :songs, only: [:create, :destroy]
+      resources :songs, only: [:create, :show, :destroy]
      resources :photos, only: [:destroy]
    end
    namespace :api do
      resources :artists, only: [:index] do
-       resources :songs, only: [:create, :destroy]
+       resources :songs, only: [:create, :show, :destroy]
      end
  end
 end

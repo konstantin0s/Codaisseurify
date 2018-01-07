@@ -22,14 +22,14 @@ artists_count = Artist.count
 puts "#{artists_count} artists were created."
 
 
-music1 = Song.create!( { title: "Livin la vida loca", genre: "latino", artist: artist1 } ),
-music2 = Song.create!( { title: "Si senior", genre: "dance", artist: artist1 } ),
-music3= Song.create!( { title: "Per tdffd", genre: "love", artist: artist2 } ),
-music4 = Song.create!( { title: "oelle", genre: "latino", artist: artist1 } ),
-music5 = Song.create!( { title: "jujsto", genre: "dance", artist: artist2 } ),
-music6= Song.create!( { title: "amazing", genre: "love", artist: artist2 } ),
-music7 = Song.create!( { title: "oelle", genre: "latino", artist: artist3 } ),
-music8 = Song.create!( { title: "jujsto", genre: "dance", artist: artist4 } )
+music1 = Song.create!( { title: "Livin la vida loca", artist: artist1 } ),
+music2 = Song.create!( { title: "Si senior", artist: artist1 } ),
+music3= Song.create!( { title: "Per tdffd", artist: artist2 } ),
+music4 = Song.create!( { title: "oelle", artist: artist1 } ),
+music5 = Song.create!( { title: "jujsto", artist: artist2 } ),
+music6= Song.create!( { title: "amazing", artist: artist2 } ),
+music7 = Song.create!( { title: "oelle", artist: artist3 } ),
+music8 = Song.create!( { title: "jujsto", artist: artist4 } )
 
 songs_count = Song.count
 puts "#{songs_count} songs were created."

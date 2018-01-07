@@ -1,5 +1,12 @@
 class SongsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+   before_action :set_artist
+
+ #   def show
+ #     json_response(@song)
+ # end
+
   def create
      @artist = Artist.find(params[:artist_id])
      @song = Song.create(song_params)
@@ -14,22 +21,17 @@ class SongsController < ApplicationController
      end
  end
 
-  def destroy
-    @song = Song.find(params[:id])
-    @song.destroy
-    respond_to do |format|
-      format.html { redirect_to request.referrer }
-      format.json { head :no_content }
-    end
-  end
+ def destroy
+     @song = Song.find(params[:id])
+     @song.destroy
+     respond_to do |format|
+       format.html { redirect_to artist_path(@artist) }
+       format.json { head :no_content }
+     end
+ end
 
 
     private
-
-
-        #def redirect_to_artist
-        #  redirect_to artist_path(@artist.id)
-        #end
 
 
         def song_params

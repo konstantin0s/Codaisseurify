@@ -5,9 +5,9 @@
      <%= f.text_field :title, placeholder: "Name", class: "form-control", id: "new-song-name" %>
     </div>
 
-    <div>
-      <%= f.text_field :genre, class: "form-control", id: "new-song-genre" %>
-    </div>
+    <!-- <div>
+      <%#= f.text_field :genre, class: "form-control", id: "new-song-genre" %>
+    </div> -->
 
     <div id="<%= @artist.id %>">
       <%= f.submit "Save", class: "btn btn-primary", id: "submit-new-song" %>
